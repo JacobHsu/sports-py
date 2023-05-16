@@ -18,3 +18,7 @@ def send_to_telegram(message):
 url = 'https://www.sportslottery.com.tw/zh-tw/news/live-schedule'
 message = f"{url}\n"
 send_to_telegram(message)
+
+standings = 'https://www.espn.com/mlb/standings'
+message = f"{standings}\n"
+send_to_telegram(message)
