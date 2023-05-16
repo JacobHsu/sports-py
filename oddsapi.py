@@ -27,7 +27,7 @@ for game in data['data']:
         home_win_rate = round(home_win_prob / (home_win_prob + away_win_prob), 2)
         away_win_rate = round(away_win_prob / (home_win_prob + away_win_prob), 2)
     print(home_team, home_win_rate, away_team, away_win_rate)
-    teams_odds.append((commence_time, game['teams'], home_team, home_win_rate, away_team, away_win_rate))
+    teams_odds.append((commence_time, home_team, home_win_rate, away_team, away_win_rate))
 
 def send_to_telegram(message):
     apiToken = os.environ.get('TELEGRAM_API_TOKEN')
@@ -43,5 +43,5 @@ def send_to_telegram(message):
 
 # 發送消息至telegram
 table = tabulate.tabulate(teams_odds, tablefmt='simple')
-message = f"{table}\n"
+message = f"{table}"
 send_to_telegram(message)
