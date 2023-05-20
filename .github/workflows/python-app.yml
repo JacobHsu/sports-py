@@ -52,3 +52,9 @@ jobs:
         TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN  }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+    - name: Run odds-api nba script
+      run: python nba.py
+      env:
+        TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN  }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
