@@ -65,7 +65,8 @@ if response.status_code == 200:
         team_odds = f"{odds[0]} vs {odds[1]}"
         team_abbr = team_abbreviations.get(min_odds_team)
         print(f"{commence_time} {teams[0]} vs {teams[1]} {odds} {team_abbreviations.get(min_odds_team)}: {min_odds_team} ")
-        teams_odds.append((commence_time, team, team_odds, team_abbr, min_odds_team))
+        teams_odds.append((commence_time, team))
+        teams_odds.append((team_odds, team_abbr, min_odds_team))
         # print(f"Team with lower odds: {min_odds_team} ")
 else:
     print("Error:", response.status_code, response.text)
