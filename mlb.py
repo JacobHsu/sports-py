@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 import tabulate
 import helper
-import team
+import mlb_team
 
 url = "https://api.the-odds-api.com/v3/odds"
 
@@ -31,10 +31,11 @@ if response.status_code == 200:
         min_odds_team = teams[min_odds_index]
         team = f"{teams[0]} vs {teams[1]}"
         team_odds = f"{odds[0]} vs {odds[1]}"
-        team_abbr = team.team_abbreviations.get(min_odds_team)
-        print(f"{commence_time} {teams[0]} vs {teams[1]} {odds} {team.team_abbreviations.get(min_odds_team)}: {min_odds_team} ")
+        team_abbr = mlb_team.team_abbreviations.get(min_odds_team)
+        team_abbr_zh = mlb_team.team_abbreviations_zh.get(min_odds_team)
+        print(f"{commence_time} {teams[0]} vs {teams[1]} {odds} {mlb_team.team_abbreviations.get(min_odds_team)}: {min_odds_team} ")
         teams_odds.append((commence_time, team))
-        teams_odds.append((team_odds, team_abbr, min_odds_team))
+        teams_odds.append((team_odds, team_abbr, team_abbr_zh, min_odds_team))
         # print(f"Team with lower odds: {min_odds_team} ")
 else:
     print("Error:", response.status_code, response.text)
