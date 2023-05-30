@@ -3,6 +3,7 @@ from datetime import datetime
 import os
 import tabulate
 import helper
+import team
 
 url = "https://api.the-odds-api.com/v3/odds"
 
@@ -17,39 +18,6 @@ response = requests.get(url, params={
     "mkt": mkt
 })
 
-team_abbreviations = {
-    'Arizona Diamondbacks': 'ARI',
-    'Atlanta Braves': 'ATL',
-    'Baltimore Orioles': 'BAL',
-    'Boston Red Sox': 'BOS',
-    'Chicago Cubs': 'CHC',
-    'Chicago White Sox': 'CHW',
-    'Cincinnati Reds': 'CIN',
-    'Cleveland Guardians': 'CLE',
-    'Colorado Rockies': 'COL',
-    'Detroit Tigers': 'DET',
-    'Houston Astros': 'HOU',
-    'Kansas City Royals': 'KC',
-    'Los Angeles Angels': 'LAA',
-    'Los Angeles Dodgers': 'LAD',
-    'Miami Marlins': 'MIA',
-    'Milwaukee Brewers': 'MIL',
-    'Minnesota Twins': 'MIN',
-    'New York Yankees': 'NYY',
-    'New York Mets': 'NYM',
-    'Oakland Athletics': 'OAK',
-    'Philadelphia Phillies': 'PHI',
-    'Pittsburgh Pirates': 'PIT',
-    'San Diego Padres': 'SD',
-    'San Francisco Giants': 'SF',
-    'Seattle Mariners': 'SEA',
-    'St. Louis Cardinals': 'STL',
-    'Tampa Bay Rays': 'TB',
-    'Texas Rangers': 'TEX',
-    'Toronto Blue Jays': 'TOR',
-    'Washington Nationals': 'WSH'
-}
-
 teams_odds = []
 
 if response.status_code == 200:
@@ -63,8 +31,8 @@ if response.status_code == 200:
         min_odds_team = teams[min_odds_index]
         team = f"{teams[0]} vs {teams[1]}"
         team_odds = f"{odds[0]} vs {odds[1]}"
-        team_abbr = team_abbreviations.get(min_odds_team)
-        print(f"{commence_time} {teams[0]} vs {teams[1]} {odds} {team_abbreviations.get(min_odds_team)}: {min_odds_team} ")
+        team_abbr = team.team_abbreviations.get(min_odds_team)
+        print(f"{commence_time} {teams[0]} vs {teams[1]} {odds} {team.team_abbreviations.get(min_odds_team)}: {min_odds_team} ")
         teams_odds.append((commence_time, team))
         teams_odds.append((team_odds, team_abbr, min_odds_team))
         # print(f"Team with lower odds: {min_odds_team} ")
