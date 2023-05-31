@@ -34,7 +34,8 @@ for score in data:
           winning_team = "Tie"
       team_abbr_zh = mlb_team.team_abbreviations_zh.get(winning_team)
       print(f"{commence_time} {home_team} {home_score} - {away_team} {away_score} (Winner: {winning_team})")
-      teams_scores.append((commence_time, home_team, home_score, away_team, away_score, team_abbr_zh, winning_team))
+      teams_scores.append((commence_time, home_team, home_score, 'vs.', away_team, away_score))
+      teams_scores.append(( team_abbr_zh, winning_team))
 
 url = "https://api.the-odds-api.com/v3/odds"
 
