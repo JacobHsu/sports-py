@@ -21,8 +21,8 @@ for score in data:
         away_team = score['away_team']
         home_score = score['scores'][0]['score']
         away_score = score['scores'][1]['score']
-    print(f"{home_team} {home_score} - {away_team} {away_score}")
-    teams_scores.append((home_team, home_score, away_team, away_score))
+        print(f"{home_team} {home_score} - {away_team} {away_score}")
+        teams_scores.append((home_team, home_score, away_team, away_score))
 
 def send_to_telegram(message):
     apiToken = os.environ.get('TELEGRAM_API_TOKEN')
@@ -37,6 +37,7 @@ def send_to_telegram(message):
 
 
 # 發送消息至telegram
-table = tabulate.tabulate(teams_scores, tablefmt='simple')
-message = f"{table}"
-send_to_telegram(message)
+if teams_scores:
+    table = tabulate.tabulate(teams_scores, tablefmt='simple')
+    message = f"{table}"
+    send_to_telegram(message)
