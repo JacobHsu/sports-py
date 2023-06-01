@@ -41,7 +41,7 @@ for score in data:
         team_abbr_zh = mlb_team.team_abbreviations_zh.get(winning_team)
         print(f"{commence_time} {home_team} {home_score} - {away_team} {away_score} (Winner: {winning_team})")
         teams_scores.append((commence_time, home_team, home_score, 'vs.', away_team, away_score))
-        teams_scores.append(((team_abbr, team_abbr_zh, winning_team))
+        teams_scores.append((team_abbr, team_abbr_zh, winning_team))
       
     if team_abbr in strong_teams_content:
         dominant_team.append(team_abbr)
