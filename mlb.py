@@ -42,18 +42,10 @@ if response.status_code == 200:
 else:
     print("Error:", response.status_code, response.text)
 
-
-with open("strong_teams.txt", "w") as file:
-    file.truncate()
-    for item in strong_team:
-        file.write(str(item) + "\n")
-
-with open("strong_teams.txt", "r") as file:
-    content = file.read()
-
 # 發送消息至telegram
+strong_team_count = len(strong_team)
 table = tabulate.tabulate(teams_odds, tablefmt='simple')
-message = f"{table}\n{content}"
+message = f"{table}\n{strong_team}\n{strong_team_count}"
 helper.send_to_telegram(message)
 
 
