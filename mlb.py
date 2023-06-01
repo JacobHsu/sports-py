@@ -19,6 +19,7 @@ response = requests.get(url, params={
 })
 
 teams_odds = []
+strong_team = []
 
 if response.status_code == 200:
     data = response.json()
@@ -36,11 +37,23 @@ if response.status_code == 200:
         print(f"{commence_time} {teams[0]} vs {teams[1]} {odds} {mlb_team.team_abbreviations.get(min_odds_team)}: {min_odds_team} ")
         teams_odds.append((commence_time, team))
         teams_odds.append((team_odds, team_abbr, team_abbr_zh, min_odds_team))
+        strong_team.append(team_abbr)
         # print(f"Team with lower odds: {min_odds_team} ")
 else:
     print("Error:", response.status_code, response.text)
 
+
+with open("strong_teams.txt", "w") as file:
+    file.truncate()
+    for item in strong_team:
+        file.write(str(item) + "\n")
+
+with open("strong_teams.txt", "r") as file:
+    content = file.read()
+
 # 發送消息至telegram
 table = tabulate.tabulate(teams_odds, tablefmt='simple')
-message = f"{table}"
+message = f"{table}\n{content}"
 helper.send_to_telegram(message)
+
+
