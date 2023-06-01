@@ -20,6 +20,7 @@ dominant_team = []
 
 with open("strong_teams.txt", "r") as file:
     strong_teams_content = file.read()
+    print("strong_teams_content:", strong_teams_content)
 
 for score in data:
     if score.get('completed'):
@@ -43,7 +44,7 @@ for score in data:
         teams_scores.append((commence_time, home_team, home_score, 'vs.', away_team, away_score))
         teams_scores.append((team_abbr, team_abbr_zh, winning_team))
       
-    if team_abbr in strong_teams_content:
+    # if team_abbr in strong_teams_content:
         dominant_team.append(team_abbr)
 
 url = "https://api.the-odds-api.com/v3/odds"
