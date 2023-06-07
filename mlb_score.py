@@ -36,9 +36,8 @@ for score in data:
         team_abbr = mlb_team.team_abbreviations.get(winning_team)
         team_abbr_zh = mlb_team.team_abbreviations_zh.get(winning_team)
         print(f"{commence_time} {home_team} {home_score} - {away_team} {away_score} (Winner: {winning_team})")
-        home = f"{home_team} {home_score}"
-        away = f"{away_team} {away_score}"
-        teams_scores.append((commence_time, home, 'vs.', away))
+        home_vs_away = f"{home_team} {home_score} vs. {away_team} {away_score}"
+        teams_scores.append((commence_time, home_vs_away))
         teams_scores.append((team_abbr, team_abbr_zh, winning_team))
 
         dominant_team.append(team_abbr)
