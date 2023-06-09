@@ -48,4 +48,7 @@ table = tabulate.tabulate(teams_odds, tablefmt='simple')
 message = f"{table}\n{strong_team}\n{strong_team_count}"
 helper.send_to_telegram(message)
 
+name_param = ','.join(strong_team)
+helper.send_to_gfuns(name_param)
+
 

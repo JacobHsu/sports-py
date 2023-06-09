@@ -11,3 +11,12 @@ def send_to_telegram(message):
         print(response.text)
     except Exception as e:
         print(e)
+
+
+def send_to_gfuns(name_param):
+    apiURL = "https://functions-mlb-5lezkyhrzq-de.a.run.app"
+    try:
+        response = requests.get(apiURL, params={'name': name_param})
+        print(response.text)
+    except Exception as e:
+        print(e)
