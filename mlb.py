@@ -34,9 +34,13 @@ if response.status_code == 200:
         team_odds = f"{odds[0]} vs {odds[1]}"
         team_abbr = mlb_team.team_abbreviations.get(min_odds_team)
         team_abbr_zh = mlb_team.team_abbreviations_zh.get(min_odds_team)
-        print(f"{commence_time} {teams[0]} vs {teams[1]} {odds} {mlb_team.team_abbreviations.get(min_odds_team)}: {min_odds_team} ")
-        teams_odds.append((commence_time, team))
-        teams_odds.append((team_odds, team_abbr, team_abbr_zh, min_odds_team))
+        team_strong = f"{team_abbr} {team_abbr_zh} {min_odds_team}"
+        team0 = mlb_team.team_abbreviations.get(teams[0])
+        team1 = mlb_team.team_abbreviations.get(teams[1])
+        team_vs = f"{team0} vs {team1}"
+        print(f"{commence_time} {team_vs} {odds} {team_abbr}: {min_odds_team} ")
+        teams_odds.append((commence_time, team_vs))
+        teams_odds.append((team_odds, team_strong))
         strong_team.append(team_abbr)
         # print(f"Team with lower odds: {min_odds_team} ")
 else:
