@@ -56,6 +56,8 @@ response = requests.get(url, params={
 })
 
 odd_strong_team = helper.query_from_gfuns()
+print(odd_strong_team)
+print(odd_strong_team['mlb'])
 
 # 發送消息至telegram
 dominant_team_count = len(dominant_team)
