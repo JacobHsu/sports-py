@@ -1,5 +1,6 @@
 import requests
 import os
+from datetime import datetime
 
 def send_to_telegram(message):
     # 使用os.environ获取Github仓库的secrets
@@ -18,5 +19,15 @@ def send_to_gfuns(name_param):
     try:
         response = requests.get(apiURL, params={'name': name_param})
         print(response.text)
+    except Exception as e:
+        print(e)
+
+def query_from_gfuns():
+    today = '20230610' # datetime.today().strftime('%Y%m%d')
+    apiURL = "https://functions-mlb-query-5lezkyhrzq-de.a.run.app"
+    try:
+        response = requests.get(apiURL, params={'day': today})
+        print(response.text)
+        return response["MLB"]
     except Exception as e:
         print(e)

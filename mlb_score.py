@@ -55,8 +55,10 @@ response = requests.get(url, params={
     "mkt": mkt
 })
 
+odd_strong_team = helper.query_from_gfuns()
+
 # 發送消息至telegram
 dominant_team_count = len(dominant_team)
 table = tabulate.tabulate(teams_scores, tablefmt='simple')
-message = f"{table}\n{dominant_team}\n{dominant_team_count}"
+message = f"{table}\n{dominant_team}\n{dominant_team_count}\n{odd_strong_team}"
 helper.send_to_telegram(message)
