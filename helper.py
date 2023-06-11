@@ -28,6 +28,6 @@ def query_from_gfuns():
     try:
         response = requests.get(apiURL, params={'day': today})
         print(response.text)
-        return response["MLB"]
+        return response.text["MLB"]
     except Exception as e:
         print(e)
