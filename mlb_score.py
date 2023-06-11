@@ -57,7 +57,7 @@ response = requests.get(url, params={
 
 winners_list = []
 odd_strong_team = helper.query_from_gfuns()
-if odd_strong_team
+if odd_strong_team:
     mlb_data = odd_strong_team['MLB']
     print(mlb_data)
     dominant_set = set(dominant_team)
