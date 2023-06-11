@@ -71,5 +71,5 @@ if odd_strong_team:
 # 發送消息至telegram
 dominant_team_count = len(dominant_team)
 table = tabulate.tabulate(teams_scores, tablefmt='simple')
-message = f"{table}\n{dominant_team}\n{dominant_team_count}\n{odd_strong_team}\n{winners_list}"
+message = f"{table}\n{dominant_team}\n{dominant_team_count}\n{winners_list}"
 helper.send_to_telegram(message)

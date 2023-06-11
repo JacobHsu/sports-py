@@ -24,7 +24,7 @@ def send_to_gfuns(name_param):
         print(e)
 
 def query_from_gfuns():
-    today = '20230610' # datetime.today().strftime('%Y%m%d')
+    today = datetime.today().strftime('%Y%m%d')
     apiURL = "https://functions-mlb-query-5lezkyhrzq-de.a.run.app"
     try:
         response = requests.get(apiURL, params={'day': today})
