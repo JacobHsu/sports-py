@@ -55,13 +55,21 @@ response = requests.get(url, params={
     "mkt": mkt
 })
 
+winners_list = []
 odd_strong_team = helper.query_from_gfuns()
-print(odd_strong_team)
-mlb_data = odd_strong_team['MLB']
-print(mlb_data)
+if odd_strong_team
+    mlb_data = odd_strong_team['MLB']
+    print(mlb_data)
+    dominant_set = set(dominant_team)
+    mlb_set = set(mlb_data)
+    # 取得相同的值
+    common_values = dominant_set.intersection(mlb_set)
+
+    # 將結果轉換為陣列
+    winners_list = list(common_values)
 
 # 發送消息至telegram
 dominant_team_count = len(dominant_team)
 table = tabulate.tabulate(teams_scores, tablefmt='simple')
-message = f"{table}\n{dominant_team}\n{dominant_team_count}\n{odd_strong_team}"
+message = f"{table}\n{dominant_team}\n{dominant_team_count}\n{odd_strong_team}\n{winners_list}"
 helper.send_to_telegram(message)
