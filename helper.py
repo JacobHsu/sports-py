@@ -28,7 +28,6 @@ def query_from_gfuns():
     apiURL = "https://functions-mlb-query-5lezkyhrzq-de.a.run.app"
     try:
         response = requests.get(apiURL, params={'day': today})
-        print(response.text)
         return json.loads(response.text)
     except Exception as e:
         print(e)
